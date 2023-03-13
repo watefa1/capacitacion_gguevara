@@ -15,5 +15,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<p>Cantidad: <input type="text" name="cantidadcosa" /></p>
 	<input type="submit" value="registrar cosa">
 	</form>
-</body></center>
+</body>
+    <body>
+        <h1>Lista de cosas</h1>
+        <table border="1">
+            <tr>
+                <th>Nombre cosa</th>
+                <th>Cantidad</th>
+                <th>Tag</th>
+            </tr>
+            <tr>
+                <td>Pelota de basquet</td>
+                <td>2</td>
+                <td>Deporte</td>
+            </tr>
+        </table>
+		</center>
 </html>

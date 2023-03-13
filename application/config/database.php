@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => 'db-development.cbq3cbjddsma.us-east-1.rds.amazonaws.com',
+	'username' => 'db_user',
+	'password' => 'ERFJF7p7My5xXjSKRv5Njf69ea2BStS2XJRzSW9Vs',
+	'database' => 'gguevarapractica',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

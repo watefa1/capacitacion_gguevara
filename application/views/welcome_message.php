@@ -10,7 +10,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="container">
 	<h1>Bienvenido</h1>
 	</div>
-	<input type="submit" href="Cosas" value="registrar una cosa">
+	<button>
+  <a href="https://capacitacion-gguevara.alephoo.com/cosas">Ir al inicio</a>
+</button>
 	</center>
 </body>
 </html>

@@ -6,18 +6,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Cosas</title>
 </head>
-<body>
-<div>
-	<h1>Alta de Cosas</h1>
-	</div>
-	<form action="form.php" method="post">
-	<p>Nombre de la cosa: <input type="text" name="nombrecosa" /></p>
-	<p>Cantidad: <input type="text" name="cantidadcosa" /></p>
-	<button>Registrar</button>
-	</form>
-</body>
     <body>
         <h1>Lista de cosas</h1>
+		<button>
+ 		 <a href="https://capacitacion-gguevara.alephoo.com/registrodecosas">Registrar nueva cosa</a>
+ 	    </button>
         <table border="1">
             <tr>
                 <th>Nombre cosa</th>

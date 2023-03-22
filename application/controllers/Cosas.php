@@ -16,4 +16,10 @@ class Cosas extends CI_Controller {
 
 		$this->load->view('cosas',$data);
 	}
+
+	public function delete($id){
+		$this->Cosas_model->delete($id);
+		redirect(base_url()."cosas");
+
+	}
 }

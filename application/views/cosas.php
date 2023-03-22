@@ -17,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <th>Nombre cosa</th>
                 <th>Cantidad</th>
                 <th>Tag</th>
+				<th>Acción</th>
             </tr>
 			<?php $number=0; foreach($data as $key => $value): ?>
             <tr>
@@ -24,6 +25,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td><?php echo $value->cosa; ?></td>
                 <td><?php echo $value->cant; ?></td>
                 <td>Deporte</td>
+				<td>
+				<a href="<?php echo base_url(); ?>cosas/delete/<?php echo $value->id; ?>" class="btn"><ion-icon name="close-circle-outline"></ion-icon>X</a>
+				</td>
             </tr>
 			<?php endforeach; ?>
         </table>

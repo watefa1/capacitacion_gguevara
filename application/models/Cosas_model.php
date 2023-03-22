@@ -14,5 +14,11 @@ class Cosas_model extends CI_Model {
 		$results=$this->db->get();
 		return $results->result();
 	}
+
+	public function delete($id){
+		$this->db->where("id",$id);
+		$this->db->delete("cosas");
+
+	}
 	
 }

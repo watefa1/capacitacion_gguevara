@@ -4,17 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="es">
 <head>
 	<meta charset="utf-8">
-	<title>Registro de cosas</title>
+	<title>Modificación de cosas</title>
 </head>
 <body>
 <div>
-	<h1>Registro de Cosas</h1>
+	<h1>Edición de Cosas</h1>
 	</div>
-	<form action="<?php echo base_url(); ?>RegistroDeCosas/save" method="POST">
+	<form action="<?php echo base_url(); ?>CosasEdit/update/<?php echo $id; ?>" method="POST">
 	<label for="nombre">    </label>
-	<input type="text" id="nombre" name="cosa" placeholder="Nombre de la cosa"><br>
+	<input type="text" id="nombre" name="cosa" value="<?php echo $cosa;?>"><br>
 	<label for="cantidad">    </label>
-    <input type="text" id="cantidad" name="cant" placeholder="Cantidad"><br>
+    <input type="text" id="cantidad" name="cant" value="<?php echo $cant;?>"><br>
 	<input type="submit" value="Guardar">
 	</form>
 	<button>

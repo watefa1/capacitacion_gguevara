@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <body>
         <h1>Lista de cosas</h1>
 		<button>
- 		 <a href="https://capacitacion-gguevara.alephoo.com/registrodecosas">Registrar nueva cosa</a>
+ 		 <a href="/RegistroDeCosas">Registrar nueva cosa</a>
  	    </button>
         <table border="1">
             <tr>
@@ -26,7 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td><?php echo $value->cant; ?></td>
                 <td>Deporte</td>
 				<td>
-				<a href="<?php echo base_url(); ?>cosas/delete/<?php echo $value->id; ?>" class="btn"><ion-icon name="close-circle-outline"></ion-icon>X</a>
+				<a href="<?php echo base_url(); ?>cosasEdit/index/<?php echo $value->id; ?>" class="btn"><ion-icon name="close-circle-outline"></ion-icon>Editar</a>
+				<a href="<?php echo base_url(); ?>/cosas/delete/<?php echo $value->id; ?>" class="btn"><ion-icon name="close-circle-outline"></ion-icon>Borrar</a>
 				</td>
             </tr>
 			<?php endforeach; ?>

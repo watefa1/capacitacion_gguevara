@@ -15,10 +15,23 @@ class Cosas_model extends CI_Model {
 		return $results->result();
 	}
 
+	public function getCosa($id){
+		$this->db->select("c.*");
+		$this->db->from("cosas c");
+		$this->db->where("c.id",$id);
+		$results=$this->db->get();
+		return $results->row();
+	}
+
 	public function delete($id){
 		$this->db->where("id",$id);
 		$this->db->delete("cosas");
 
+	}
+
+	public function update($data, $id){
+		$this->db->where("id",$id);
+		$this->db->update("cosas",$data);
 	}
 	
 }

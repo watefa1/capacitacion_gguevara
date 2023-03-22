@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Bienvenido</h1>
 	</div>
 	<button>
-  <a href="https://capacitacion-gguevara.alephoo.com/cosas">Ir al inicio</a>
+  <a href="/cosas">Ir al inicio</a>
 </button>
 	</center>
 </body>

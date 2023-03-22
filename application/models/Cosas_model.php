@@ -7,5 +7,12 @@ class Cosas_model extends CI_Model {
 		$this->db->query("ALTER TABLE cosas AUTO_INCREMENT 1");
 		$this->db->insert("cosas",$data);
 	}
+
+	public function getCosas(){
+		$this->db->select("*");
+		$this->db->from("cosas");
+		$results=$this->db->get();
+		return $results->result();
+	}
 	
 }

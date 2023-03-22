@@ -13,14 +13,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  	    </button>
         <table border="1">
             <tr>
+				<th>ID</th>
                 <th>Nombre cosa</th>
                 <th>Cantidad</th>
                 <th>Tag</th>
             </tr>
+			<?php $number=0; foreach($data as $key => $value): ?>
             <tr>
-                <td>Pelota de basquet</td>
-                <td>2</td>
+				<th scope="row"><?php echo $number++; ?></th>
+                <td><?php echo $value->cosa; ?></td>
+                <td><?php echo $value->cant; ?></td>
                 <td>Deporte</td>
             </tr>
+			<?php endforeach; ?>
         </table>
 </html>

@@ -12,6 +12,8 @@ class Cosas extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('cosas');
+		$data = array("data"=>$this->Cosas_model->getCosas());
+
+		$this->load->view('cosas',$data);
 	}
 }

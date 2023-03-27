@@ -6,11 +6,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Cosas</title>
 </head>
-    <body>
-        <h1>Lista de cosas</h1>
-		<button>
- 		 <a href="/RegistroDeCosas">Registrar nueva cosa</a>
- 	    </button>
+<h1>Lista de cosas</h1>
+<button>
+	<a href="/RegistroDeCosas">Registrar nueva cosa</a>
+</button>
+<form method="post">
+	<input type="search" name="search" placeholder="Buscar cosa..." autofocus>
+	<button type="submit">Buscar</button>
+	<button><a href="Cosas">Reiniciar</a></button>
+</form>
         <table border="1">
             <tr>
 				<th>ID</th>

@@ -34,4 +34,10 @@ class Cosas_model extends CI_Model {
 		$this->db->update("cosas",$data);
 	}
 	
+	public function buscar_cosas($termino_busqueda)
+	{
+		$this->db->like('cosa', $termino_busqueda);
+		$query = $this->db->get('cosas');
+		return $query->result();
+	}
 }

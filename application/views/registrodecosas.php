@@ -20,7 +20,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <input type="text" id="cantidad" name="cant" placeholder="Cantidad" class="form-control <?php echo form_error('cant') ? 'is-invalid':'';?>" value="<?php echo set_value('cant')?>"><br>
 	<div class="invalid-feedback">
 		<?php echo form_error('cant')?>
-		</div>
+		<select name="tags">
+    <?php foreach ($tags as $etiqueta) { ?>
+        <option value="<?= $etiqueta->id ?>"><?= $etiqueta->tag ?></option>
+    <?php } ?>
+</select>
 	<input type="submit" value="Guardar">
 	</form>
 	<button>

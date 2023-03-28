@@ -28,7 +28,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<th scope="row"><?php echo $number++; ?></th>
                 <td><?php echo $value->cosa; ?></td>
                 <td><?php echo $value->cant; ?></td>
-                <td>Deporte</td>
+                <td><?php foreach($tags as $tag): ?>
+				<option value="<?php echo $tag->id; ?>"><?php echo $tag->tag; ?></option>
+				<?php endforeach; ?></td>
 				<td>
 				<a href="<?php echo base_url(); ?>cosasEdit/index/<?php echo $value->id; ?>" class="btn"><ion-icon name="close-circle-outline"></ion-icon>Editar</a>
 				<a href="<?php echo base_url(); ?>/cosas/delete/<?php echo $value->id; ?>" class="btn"><ion-icon name="close-circle-outline"></ion-icon>Borrar</a>

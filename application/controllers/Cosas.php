@@ -13,6 +13,7 @@ class Cosas extends CI_Controller {
 		public function index()
 		{
 			$data = array("data" => $this->Cosas_model->getCosas());
+			$data['tags'] = $this->Cosas_model->getTags();
 		
 			if ($this->input->post('search')) {
 				$termino_busqueda = $this->input->post('search');

@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<a href="/RegistroDeCosas">Registrar nueva cosa</a>
 </button>
 <form method="get">
-	<input type="search" name="search" placeholder="<?php echo $this->input->get('search') ? $this->input->get('search') : 'Buscar cosa...'; ?>" autofocus>
+	<input type="search" name="search" placeholder="Buscar cosa..." value="<?php echo $this->input->get('search')?>" autofocus>
 	<button type="submit">Buscar</button>
 	<button><a href="Cosas">Reiniciar</a></button>
 </form>

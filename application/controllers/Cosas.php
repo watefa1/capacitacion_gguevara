@@ -15,8 +15,8 @@ class Cosas extends CI_Controller {
 			$data = array("data" => $this->Cosas_model->getCosas());
 			$data['tags'] = $this->Cosas_model->getTags();
 		
-			if ($this->input->post('search')) {
-				$termino_busqueda = $this->input->post('search');
+			if ($this->input->get('search')) {
+				$termino_busqueda = $this->input->get('search');
 				$data['data'] = $this->Cosas_model->buscar_cosas($termino_busqueda);
 			}
 		

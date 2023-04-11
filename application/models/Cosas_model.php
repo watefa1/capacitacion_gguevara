@@ -7,9 +7,9 @@ public function save($data){
 	$this->db->insert("cosas",$data);
 }
 
-public function saveTag($data){
-	$this->db->query("ALTER TABLE tags AUTO_INCREMENT 1");
-	$this->db->insert("tags",$data);
+public function saveTag($data)
+{
+    $this->db->insert("tags", $data);
 }
 
 public function getCosas(){
@@ -43,6 +43,9 @@ public function getTag($id){
 }
 
 public function delete($id){
+	$this->db->where('cosas_id', $id);
+    $this->db->delete('Cosas_tags');
+	
 	$this->db->where("id",$id);
 	$this->db->delete("cosas");
 
@@ -66,4 +69,16 @@ public function getEtiquetas(){
 	$results=$this->db->get();
 	return $results->result();
 }
+
+public function saveCosasTags($id_cosa, $id_tags)
+{
+    foreach ($id_tags as $id_tag) {
+        $data = array(
+            "cosas_id" => $id_cosa,
+            "tags_id" => $id_tag
+        );
+        $this->db->insert("Cosas_tags", $data);
+    }
+}
+
 }

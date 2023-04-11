@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php echo form_error('cant')?>
 		<div>
   <?php foreach ($tags as $etiqueta) { ?>
-    <input type="checkbox" name="etiquetas[]" value="<?php echo $etiqueta->id; ?>"> <?php echo $etiqueta->tag; ?>
+    <input type="checkbox" name="etiquetas[]" value="<?php echo $etiqueta->id; ?>" <?php if ($etiqueta->id == $tags[0]->id); ?>> <?php echo $etiqueta->tag; ?>
   <?php } ?>
 </div>
 	<input type="submit" value="Guardar">

@@ -45,7 +45,7 @@ public function getTag($id){
 public function delete($id){
 	$this->db->where('cosas_id', $id);
     $this->db->delete('Cosas_tags');
-	
+
 	$this->db->where("id",$id);
 	$this->db->delete("cosas");
 
@@ -80,5 +80,15 @@ public function saveCosasTags($id_cosa, $id_tags)
         $this->db->insert("Cosas_tags", $data);
     }
 }
+
+public function getTagsByCosaId($cosa_id){
+	$this->db->select("t.*");
+	$this->db->from("Cosas_tags ct");
+	$this->db->join("tags t", "t.id = ct.tags_id");
+	$this->db->where("ct.cosas_id", $cosa_id);
+	$results=$this->db->get();
+	return $results->result();
+}
+
 
 }

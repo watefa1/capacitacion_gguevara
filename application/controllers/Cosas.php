@@ -10,22 +10,27 @@ class Cosas extends CI_Controller {
         }
 
 	
-		public function index()
-		{
-			$data = array("data" => $this->Cosas_model->getCosas());
-			$data['tags'] = $this->Cosas_model->getTags();
+	public function index()
+	{
+		$data = array();
+		$cosas = $this->Cosas_model->getCosas();
 		
-			if ($this->input->get('search')) {
-				$termino_busqueda = $this->input->get('search');
-				$data['data'] = $this->Cosas_model->buscar_cosas($termino_busqueda);
-			}
-		
-			$this->load->view('cosas', $data);
+		foreach ($cosas as $cosa) {
+			$cosa->tags = $this->Cosas_model->getTagsByCosaId($cosa->id);
+			$data[] = $cosa;
 		}
+		
+		if ($this->input->get('search')) {
+			$termino_busqueda = $this->input->get('search');
+			$data = $this->Cosas_model->buscar_cosas($termino_busqueda);
+		}
+		
+		$this->load->view('cosas', array("data" => $data));
+	}
 
 	public function delete($id){
 		$this->Cosas_model->delete($id);
 		redirect(base_url()."cosas");
-
 	}
 }
+

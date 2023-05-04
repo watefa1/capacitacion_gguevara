@@ -18,7 +18,7 @@ class RegistroDeCosas extends CI_Controller {
 		}
 
 		public function save(){
-			$nombre = $this->input->post("cosa");
+			$nombre = htmlspecialchars($_POST['cosa']);
 			$cantidad = $this->input->post("cant");
 		
 			$this->form_validation->set_rules('cosa', 'Cosas', 'required|min_length[2]|max_length[20]|is_unique[cosas.cosa]');

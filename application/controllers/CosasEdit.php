@@ -17,7 +17,7 @@ class CosasEdit extends CI_Controller {
 	}
 
 	public function update($id){
-		$nombre = $this->input->post("cosa");
+		$nombre = htmlspecialchars($_POST['cosa']);
 		$cantidad = $this->input->post("cant");
 
 		$data = array(

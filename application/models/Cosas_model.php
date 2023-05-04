@@ -12,6 +12,28 @@ public function saveTag($data)
     $this->db->insert("tags", $data);
 }
 
+
+public function saveEtiquetasDB($tag)
+{
+	$data = array(
+		"tag" => $tag
+	);
+	$this->db->insert("tags", $data);
+}
+
+public function getEtiquetasBD()
+{
+	$query = $this->db->get("tags");
+	return $query->result();
+}
+
+public function deleteEtiquetasBD($id)
+{
+	$this->db->where("id", $id);
+	$this->db->delete("tags");
+}
+
+
 public function getCosas(){
 	$this->db->select("*");
 	$this->db->from("cosas");
@@ -86,6 +108,15 @@ public function getTagsByCosaId($cosa_id){
 	$this->db->from("Cosas_tags ct");
 	$this->db->join("tags t", "t.id = ct.tags_id");
 	$this->db->where("ct.cosas_id", $cosa_id);
+	$results=$this->db->get();
+	return $results->result();
+}
+
+public function getTagsId($tag_id){
+	$this->db->select("t.*");
+	$this->db->from("Cosas_tags ct");
+	$this->db->join("tags t", "t.id = ct.tags_id");
+	$this->db->where("ct.tags_id", $tag_id);
 	$results=$this->db->get();
 	return $results->result();
 }

@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 	<form action="<?php echo base_url(); ?>RegistroDeCosas/save" method="POST">
 	<label for="nombre">    </label>
-	<input type="text" id="nombre" name="cosa" placeholder="Nombre de la cosa"class="form-control <?php echo form_error('cosa') ? 'is-invalid':'';?>" value="<?php echo set_value('cosa')?>"><br>
+	<input type="text" id="nombre" name="cosa" placeholder="Nombre de la cosa" class="form-control <?php echo form_error('cosa') ? 'is-invalid':'';?>" value="<?php echo htmlspecialchars(set_value('cosa'))?>"><br>
 	<div class="invalid-feedback">
 	<?php echo form_error('cosa')?>
 	</div>

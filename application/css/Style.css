@@ -115,3 +115,56 @@
 		.ion-icon-accion {
 			color: white;
 		  }
+
+		  .custom-checkbox {
+			display: inline-block;
+			position: relative;
+			padding-left: 25px;
+			margin-right: 10px;
+			cursor: pointer;
+			font-size: 16px;
+		  }
+		  
+		  .custom-checkbox input {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+		  }
+		  
+		  .checkmark {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 20px;
+			height: 20px;
+			background-color: #f0f0f0;
+			border: 2px solid #000;
+		  }
+		  
+		  .custom-checkbox:hover .checkmark {
+			background-color: rgb(235, 119, 47);
+		  }
+		  
+		  .custom-checkbox input:checked ~ .checkmark {
+			background-color: rgb(235, 119, 47);
+		  }
+		  
+		  .checkmark:after {
+			content: "";
+			position: absolute;
+			display: none;
+		  }
+		  
+		  .custom-checkbox input:checked ~ .checkmark:after {
+			display: block;
+		  }
+		  
+		  .custom-checkbox .checkmark:after {
+			left: 6px;
+			top: 2px;
+			width: 5px;
+			height: 10px;
+			border: solid #000;
+			border-width: 0 2px 2px 0;
+			transform: rotate(45deg);
+		  }

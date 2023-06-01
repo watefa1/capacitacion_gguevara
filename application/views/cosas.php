@@ -13,12 +13,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </button>
 <button>
 	<a href="/RegistroDeTags">Registrar/Eliminar tag</a>
-</button>
+</button><center>
 <form method="get">
 	<input type="search" name="search" placeholder="Buscar cosa..." value="<?php echo $this->input->get('search')?>" autofocus>
 	<button type="submit">Buscar</button>
 	<button><a href="Cosas">Reiniciar</a></button>
-</form>
+</form>			
 			<table border="1"> 
             <tr>
 				<th>ID</th>
@@ -39,5 +39,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</td>
             </tr>
 			<?php endforeach; ?>
-        </table>
+        </table> </center>
 </html>

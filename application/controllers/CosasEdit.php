@@ -10,21 +10,54 @@ class CosasEdit extends CI_Controller {
         }
 
 	
-	public function index($id)
-	{
-		$data = $this->Cosas_model->getCosa($id);
-		$this->load->view('cosasedit',$data);
-	}
+		public function index($id)
+{
+    $this->load->model("Cosas_model");
 
-	public function update($id){
-		$nombre = htmlspecialchars($_POST['cosa']);
-		$cantidad = $this->input->post("cant");
+    $data['cosa'] = $this->Cosas_model->getCosa($id);
 
-		$data = array(
-			"cosa"=>$nombre,
-			"cant"=>$cantidad
-		);
-		$this->Cosas_model->update($data, $id);
-		redirect(base_url()."cosas");
-	}
+    $data['selectedTags'] = array();
+    if ($data['cosa']) {
+        $selectedTags = $this->Cosas_model->getTagsByCosaId($id);
+        foreach ($selectedTags as $tag) {
+            $data['selectedTags'][] = $tag->id;
+        }
+    }
+
+    $data['tags'] = $this->Cosas_model->getTags();
+
+    $data['id'] = $id;
+
+    $this->load->view('cosasedit', $data);
+}
+
+
+
+
+
+public function update($id)
+{
+    $nombre = htmlspecialchars($this->input->post('cosa'));
+    $cantidad = $this->input->post('cant');
+    $etiquetas = $this->input->post('etiquetas');
+
+    $data = array(
+        'cosa' => $nombre,
+        'cant' => $cantidad
+    );
+
+    $this->Cosas_model->update($data, $id);
+
+    // Actualizar etiquetas
+    $this->Cosas_model->clearTags($id); // Limpiar todas las etiquetas existentes
+
+    if (!empty($etiquetas)) {
+        foreach ($etiquetas as $tagId) {
+            $this->Cosas_model->addTag($id, $tagId); // Agregar las nuevas etiquetas
+        }
+    }
+
+    redirect(base_url() . 'cosas');
+}
+
 }

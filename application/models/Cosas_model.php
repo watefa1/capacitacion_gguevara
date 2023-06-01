@@ -121,5 +121,20 @@ public function getTagsId($tag_id){
 	return $results->result();
 }
 
+public function clearTags($cosaId)
+{
+    $this->db->where('cosas_id', $cosaId);
+    $this->db->delete('Cosas_tags');
+}
+
+public function addTag($cosaId, $tagId)
+{
+    $data = array(
+        'cosas_id' => $cosaId,
+        'tags_id' => $tagId
+    );
+    $this->db->insert('Cosas_tags', $data);
+}
+
 
 }

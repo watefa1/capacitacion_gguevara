@@ -16,7 +16,7 @@ class RegistroDeTags extends CI_Controller {
 	}
 
 	public function save(){
-		$tag = htmlspecialchars($_POST['tag']);
+		$tag = $this->input->post("tag", true);
 		$this->Cosas_model->saveEtiquetasDB($tag);
 		redirect(base_url()."RegistroDeTags");
 	}

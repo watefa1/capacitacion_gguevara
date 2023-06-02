@@ -28,7 +28,7 @@
 	}
 
 	.colorpalabrasboton {
-		color: rgb(235, 119, 47);
+		color: #ffffff;
 		text-shadow: -0.2px -0.2px 0 #fffafa, 1px -0.2px 0 #000, -0.2px 1px 0 #000, 1px 1px 0 #000;
 	}
 	
@@ -45,14 +45,15 @@
 	  }
 	  
 	  .my-button {
-		background-color:  #d3cfcf;
-		color: #000;
+		background-color:   rgb(235, 119, 47);
+		color: #ffffff;
 		border: 3px solid #000;
 		padding: 10px 20px;
 	  }
 	  
 	  .my-button:hover {
-		animation: borderAnimation 1s infinite;
+		animation: borderAnimation 4s infinite;
+		background-color:  rgb(158, 79, 29);
 	  }
 
 	  .campos {
@@ -65,7 +66,7 @@
 
 	  .tabla {
 		background-color:  #352f2f;
-		color: rgb(235, 119, 47);
+		color: rgb(255, 255, 255);
 		text-shadow: -0.01px -0.01px 0 #000, 1px-0.01px 0 #000, -0.01px 1px 0 #000, 1px 1px 0 #000;
 		border: 3px solid rgb(235, 119, 47);
 		padding: 10px 20px;
@@ -137,8 +138,8 @@
 			left: 0;
 			width: 20px;
 			height: 20px;
-			background-color: #f0f0f0;
-			border: 2px solid #000;
+			background-color: #000000;
+			border: 2px solid #0b0000;
 		  }
 		  
 		  .custom-checkbox:hover .checkmark {

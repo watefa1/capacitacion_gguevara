@@ -20,9 +20,9 @@
 				<input type="checkbox" name="etiquetas[]" value="<?php echo $tag->id; ?>" <?php if (in_array($tag->id, $selectedTags)) echo "checked"; ?>><?php echo $tag->tag; ?><br>
 			<?php endforeach; ?>
 		</div>
-		<input type="submit" value="Guardar">
+		<input type="submit" value="Guardar" class="my-button">
 	</form>
-	<button>
+	<button class="my-button">
   		<a href="/cosas">Volver</a>
 	</button>
 	</center>

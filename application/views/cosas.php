@@ -4,7 +4,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="es">
 	<head> 
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script src="application/js/jquery.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+ $(document).ready(function() {
+  // Capturar el evento de envío del formulario
+  $('#search-form').submit(function(event) {
+    // Prevenir la recarga de la página por defecto
+    event.preventDefault();
+
+    // Obtener el valor del campo de búsqueda
+    var searchTerm = $('input[name="search"]').val();
+
+    var originalTableHTML = $('.tabla').html();
+
+    // Realizar la búsqueda utilizando AJAX
+    $.ajax({
+      url: 'Cosas', // La URL del controlador o la ruta que maneja la búsqueda
+      type: 'GET',
+      data: { search: searchTerm }, // Los datos que se enviarán al controlador
+      success: function(response) {
+        // Manejar la respuesta del controlador (por ejemplo, actualizar la tabla de resultados)
+        if (response.trim() !== '') {
+          $('.tabla').html(response);
+        } else {
+          $('.tabla').html(originalTableHTML);
+        }
+
+        // Restablecer el formulario y otros elementos
+        $('input[name="search"]').val(''); // Vaciar el campo de búsqueda
+      },
+      error: function(xhr, status, error) {
+        // Manejar errores en caso de que ocurra alguno
+        console.log(error);
+      }
+    });
+  });
+});
+</script>
 	<style>
     .marquee {
       overflow: hidden;
@@ -29,11 +66,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <button class="my-button">
 	<a href="/RegistroDeTags" class="colorpalabrasboton">ABM TAGS <ion-icon name="pricetags-sharp"></ion-icon></a>
 </button><center>
-<form method="get">
-	<input type="search" name="search" class="campos" placeholder="Buscar cosa..." value="<?php echo $this->input->get('search')?>" autofocus>
-	<button type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>
-	<button><a href="Cosas"><ion-icon name="refresh-sharp"></ion-icon></a></button>
-</form>			
+<form id="search-form" method="get">
+  <input type="search" name="search" class="campos" placeholder="Buscar cosa..." value="<?php echo $this->input->get('search')?>" autofocus>
+  <button type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>
+  <button><a href="Cosas"><ion-icon name="refresh-sharp"></ion-icon></a></button>
+</form>
+<div class="result-container">
 			<table class="tabla" border="1"> 
             <tr>
 			  <th>ID</th>
@@ -59,6 +97,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</td>
             </tr>
 			<?php endforeach; ?>
-        </table> </center>
+        </table> </center> </div>
 		</body>
 </html>

@@ -28,8 +28,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <input type="submit" value="Guardar" class="my-button">
 	</form>
-	<button class="my-button">
-  		<a href="/cosas">Volver</a>
+	<button">
+  		<a href="/cosas" class='my-button'>Volver</a>
 	</button> </center>
 </body>
 </html>

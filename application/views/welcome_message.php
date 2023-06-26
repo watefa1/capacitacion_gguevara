@@ -11,6 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<button class="my-button">
   <a href="/cosas" class="colorpalabrasboton">Ir al inicio</a>
 </button>
+<button class="my-button">
+  <a href="404" class="colorpalabrasboton">No hay tickets en FreskDesk</a>
+</button>
 	</center>
 </body>
 </html>

@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="application/js/jquery.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script>
- $(document).ready(function() {
+	$(document).ready(function() {
   // Capturar el evento de envío del formulario
   $('#search-form').submit(function(event) {
     // Prevenir la recarga de la página por defecto
@@ -16,8 +16,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     // Obtener el valor del campo de búsqueda
     var searchTerm = $('input[name="search"]').val();
 
-    var originalTableHTML = $('.tabla').html();
-
     // Realizar la búsqueda utilizando AJAX
     $.ajax({
       url: 'Cosas', // La URL del controlador o la ruta que maneja la búsqueda
@@ -25,15 +23,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       data: { search: searchTerm }, // Los datos que se enviarán al controlador
       success: function(response) {
         // Manejar la respuesta del controlador (por ejemplo, actualizar la tabla de resultados)
-        if (response.trim() !== '') {
-          $('.tabla').html(response);
-        } else {
-          $('.tabla').html(originalTableHTML);
-        }
-
-        // Restablecer el formulario y otros elementos
-        $('input[name="search"]').val(''); // Vaciar el campo de búsqueda
-      },
+        var tabla = $('.tabla');
+        var originalTableHTML = tabla.html();
+			}},
+				success: function(response) {
+  // Manejar la respuesta del controlador (por ejemplo, actualizar la tabla de resultados)
+  if (response.trim() !== '') {
+    $('.tabla tbody').empty(); // Vaciar el cuerpo de la tabla antes de insertar los nuevos resultados
+    $('.tabla tbody').html(response);
+  } else {
+    $('.tabla tbody').empty(); // Vaciar la tabla si no hay resultados
+  }
       error: function(xhr, status, error) {
         // Manejar errores en caso de que ocurra alguno
         console.log(error);
@@ -41,6 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     });
   });
 });
+
 </script>
 	<style>
     .marquee {

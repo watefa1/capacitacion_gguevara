@@ -73,21 +73,6 @@
 		padding: 10px 20px;
 	  }
 
-	  .campos-container {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	  }
-	  
-	  .campos-container label {
-		margin-bottom: 5px;
-	  }
-	  
-	  .campo-container input[type="text"],
-	  .campo-container input[type="checkbox"] {
-		margin-bottom: 10px;
-	  }
-
 	  @keyframes borderAnimationLetras {
 		0% {
 			color: #4ac4a9;
@@ -116,57 +101,4 @@
 
 		.ion-icon-accion {
 			color: rgb(51, 49, 49);
-		  }
-
-		  .custom-checkbox {
-			display: inline-block;
-			position: relative;
-			padding-left: 25px;
-			margin-right: 10px;
-			cursor: pointer;
-			font-size: 16px;
-		  }
-		  
-		  .custom-checkbox input {
-			position: absolute;
-			opacity: 0;
-			cursor: pointer;
-		  }
-		  
-		  .checkmark {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 20px;
-			height: 20px;
-			background-color: #000000;
-			border: 2px solid #0b0000;
-		  }
-		  
-		  .custom-checkbox:hover .checkmark {
-			background-color: rgb(235, 119, 47);
-		  }
-		  
-		  .custom-checkbox input:checked ~ .checkmark {
-			background-color: rgb(235, 119, 47);
-		  }
-		  
-		  .checkmark:after {
-			content: "";
-			position: absolute;
-			display: none;
-		  }
-		  
-		  .custom-checkbox input:checked ~ .checkmark:after {
-			display: block;
-		  }
-		  
-		  .custom-checkbox .checkmark:after {
-			left: 6px;
-			top: 2px;
-			width: 5px;
-			height: 10px;
-			border: solid #000;
-			border-width: 0 2px 2px 0;
-			transform: rotate(45deg);
 		  }

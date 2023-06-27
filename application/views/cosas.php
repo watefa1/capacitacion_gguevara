@@ -43,23 +43,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 });
 
 </script>
-	<style>
-    .marquee {
-      overflow: hidden;
-      white-space: nowrap;
-      animation: marquee 30s linear infinite;
-    }
-
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-  </style>
     <link href="application/css/Style.css" rel="stylesheet" type="text/css">
 	<meta charset="utf-8">
 	<title>Cosas</title>
 </head> <body class="background">
-<h1 class="marquee moving-border" data-title="Lista de Cosas">Lista de Cosas</h1>
+<h1 data-title="Lista de Cosas">Lista de Cosas</h1>
 
 <button class="my-button">
 	<a href="/RegistroDeCosas" class="colorpalabrasboton">Registrar nueva cosa <ion-icon name="planet-sharp"></ion-icon></a>

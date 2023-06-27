@@ -15,6 +15,7 @@ body {
     background: url(<?php echo base_url(); ?>application/image/404.png);
     background-size: cover;
 }
+
 .wrap{
     margin:0 auto;
     width:1000px;
@@ -37,6 +38,7 @@ body {
 .sub a:hover {
 		animation: borderAnimation 4s infinite;
 		background-color:  #4ac4a9;
+		color: #ffffff;
 	  }
 .footer{
     color:#555;

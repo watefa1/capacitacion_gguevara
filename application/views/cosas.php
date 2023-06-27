@@ -69,8 +69,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </button><center>
 <form id="search-form" method="get">
   <input type="search" name="search" class="campos" placeholder="Buscar cosa..." value="<?php echo $this->input->get('search')?>" autofocus>
-  <button type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>
-  <button><a href="Cosas"><ion-icon name="refresh-sharp"></ion-icon></a></button>
+  <button class="my-button1" type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>
+  <button class="my-button1"><a href="Cosas"><ion-icon name="refresh-sharp"></ion-icon></a></button>
 </form>
 <div class="result-container">
 			<table class="tabla" border="1"> 

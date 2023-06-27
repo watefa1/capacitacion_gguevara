@@ -39,7 +39,7 @@
 	.my-button {
 		background-color: #fafafa;
 		color: #180000;
-		border: 3px solid #4ac4a9;
+		border: 2px solid #4ac4a9;
 		padding: 10px 20px;
 	}
 	  
@@ -48,10 +48,20 @@
 		background-color:  #4ac4a9;
 	  }
 
+	  .my-button1 {
+		background-color: #fafafa;
+		color: #180000;
+		border: 1px solid #4ac4a9;
+		padding: 10px 20px;
+	}
+	  
+	  .my-button1:hover {
+		background-color:  #4ac4a9;
+	  }
+
 	  .campos {
 		background-color:  #ffffff;
-		color: #000;
-		border: 3px solid #4ac4a9;
+		border: 1px solid #4ac4a9;
 		padding: 10px 20px;
 	  }
 
@@ -59,7 +69,7 @@
 		background-color:  #ffffff;
 		color: rgb(61, 58, 58);
 		text-shadow: -0.01px -0.01px 0 #000, 1px-0.01px 0 #000, -0.01px 1px 0 #000, 1px 1px 0 #000;
-		border: 3px solid #4ac4a9;
+		border: 2px solid #4ac4a9;
 		padding: 10px 20px;
 	  }
 

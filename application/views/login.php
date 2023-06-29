@@ -15,13 +15,16 @@
 
             <label for="password"></label>
             <input type="password" class="campos" placeholder="contraseña" id="password" name="password" required>
-		<br>
+            <br>
             <button type="submit" class="my-button colorpalabrasboton" style="margin-top: 3px;">Iniciar sesión</button>
-			
-					<button class="my-button" style="margin-top: 3px;">
-						<a href="registro" class="colorpalabrasboton">Registrarse</a>
-					</button>
+            <button class="my-button" style="margin-top: 3px;">
+                <a href="registro" class="colorpalabrasboton">Registrarse</a>
+            </button>
         </form>
+
+        <?php if (isset($error)): ?>
+            <p><?php echo $error; ?></p>
+        <?php endif; ?>
     </center>
 </body>
 </html>

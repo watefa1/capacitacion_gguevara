@@ -102,3 +102,19 @@
 		.ion-icon-accion {
 			color: rgb(96, 93, 93);
 		  }
+
+		.cuadro {
+			width: 200px;
+            border: 1px solid #4ac4a9;
+            padding: 1px;
+			margin-bottom: 20px;
+            top: 1;
+            left: 1;
+			border: 2px solid;
+		  }
+
+		  .usuariopalabra {
+			color: #676262;
+			font-weight: bold;
+			text-decoration: none;
+		}

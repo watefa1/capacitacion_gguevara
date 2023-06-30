@@ -59,19 +59,19 @@ if ($hora >= 6 && $hora < 12) {
     </button> <style>
 			    .logout-button {
 			        float: right;
-			        margin-top: 3px;
+			        margin-top: 1px;
 			    }
 			</style>
 	<button class="my-button logout-button">
     <a href="<?php echo base_url('Login/logout'); ?>" class="colorpalabrasboton">Cerrar sesión <ion-icon name="rocket-sharp"></ion-icon></a>
 	</button>
     <center>
-        <form id="search-form" method="get">
-            <input type="search" name="search" class="campos" placeholder="Buscar cosa..." value="<?php echo $this->input->get('search')?>" autofocus>
-            <button class="my-button1" type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>
-            <button class="my-button1"><a href="Cosas"><ion-icon name="refresh-sharp"></ion-icon></a></button>
-        </form>
-        <div class="result-container">
+		<div class="result-container">
+			<form id="search-form" method="get">
+				<input type="search" name="search" class="campos" placeholder="Buscar cosa..." value="<?php echo $this->input->get('search')?>" autofocus>
+				<button class="my-button1" type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>
+				<button class="my-button1"><a href="Cosas"><ion-icon name="refresh-sharp"></ion-icon></a></button>
+			</form>
             <table class="tabla" border="1">
                 <tr>
                     <th>ID</th>

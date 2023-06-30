@@ -11,6 +11,9 @@ class RegistroDeTags extends CI_Controller {
 
 	public function index()
 	{
+		if (!$this->session->userdata('nombre_usuario')) {
+			redirect('login?alert=1');
+		}
 		$data['tags'] = $this->Cosas_model->getEtiquetasBD(); // Obtener la lista de tags desde el modelo
 		$this->load->view('registrodetags', $data);
 	}

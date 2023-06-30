@@ -12,6 +12,9 @@ class RegistroDeCosas extends CI_Controller {
 	
 		public function index()
 		{
+			if (!$this->session->userdata('nombre_usuario')) {
+				redirect('login?alert=1');
+			}
 			$etiquetas = $this->Cosas_model->getEtiquetas();
 			$datos['tags'] = $etiquetas;
 			$this->load->view('registrodecosas', $datos);

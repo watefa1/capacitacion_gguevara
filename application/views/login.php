@@ -1,4 +1,10 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+if (isset($_GET['alert']) && $_GET['alert'] == 1): ?>
+    <script>
+        alert("Debes iniciar sesión para acceder a las demás páginas.");
+    </script>
+<?php endif; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

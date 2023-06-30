@@ -12,6 +12,9 @@ class CosasEdit extends CI_Controller {
 	
 		public function index($id)
 {
+	if (!$this->session->userdata('nombre_usuario')) {
+		redirect('login?alert=1');
+	}
     $this->load->model("Cosas_model");
 
     $data['cosa'] = $this->Cosas_model->getCosa($id);

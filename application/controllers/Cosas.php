@@ -10,6 +10,11 @@ class Cosas extends CI_Controller {
 
     public function index()
     {
+
+		if (!$this->session->userdata('nombre_usuario')) {
+			redirect('login?alert=1');
+		}
+		
         $data = array();
         $cosas = $this->Cosas_model->getCosas();
 

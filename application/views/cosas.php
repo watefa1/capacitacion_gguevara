@@ -13,35 +13,8 @@ if ($hora >= 6 && $hora < 12) {
 <html lang="es">
 <head>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script>
-        $(document).ready(function() {1
-            $('#search-form').submit(function(event) {
-                event.preventDefault();
-
-                var searchTerm = $('input[name="search"]').val();
-
-                $.ajax({
-                    url: 'Cosas', 
-                    type: 'GET',
-                    data: { search: searchTerm }, 
-                    success: function(response) {
-                        if (response.trim() !== '') {
-                            $('.tabla tbody').empty(); 
-                            $('.tabla tbody').html(response);
-                        } else {
-                            $('.tabla tbody').empty();
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        
-                        console.log(error);
-                    }
-                });
-            });
-        });
-    </script>
     <link href="application/css/Style.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <title>Cosas</title>
@@ -66,7 +39,7 @@ if ($hora >= 6 && $hora < 12) {
     <a href="<?php echo base_url('Login/logout'); ?>" class="colorpalabrasboton">Cerrar sesión <ion-icon name="rocket-sharp"></ion-icon></a>
 	</button>
     <center>
-		<div class="result-container">
+		<div class="result-container"> 
 			<form id="search-form" method="get">
 				<input type="search" name="search" class="campos" placeholder="Buscar cosa..." value="<?php echo $this->input->get('search')?>" autofocus>
 				<button class="my-button1" type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>

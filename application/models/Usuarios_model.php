@@ -19,4 +19,9 @@ class Usuarios_model extends CI_Model {
             return false;
         }
     }
+
+	public function crearUsuario($userData)
+    {
+        $this->db->insert('usuarios', $userData);
+    }
 }

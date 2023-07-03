@@ -15,9 +15,9 @@ class Login extends CI_Controller {
             
             $user = $this->Usuarios_model->login($username, $password);
 
-			if ($user) {
-				$this->session->set_userdata('nombre_usuario', $user->username); // Almacenar el nombre de usuario en la sesión
-				redirect('cosas');
+            if ($user) {
+                $this->session->set_userdata('nombre_usuario', $user->username);
+                redirect('cosas');
             } else {
                 $data['error'] = 'Hay errores en el usuario y/o contraseña. Inténtalo de nuevo.';
                 $this->load->view('login', $data);
@@ -27,11 +27,29 @@ class Login extends CI_Controller {
         }
     }
 
+	public function register()
+{
+    $username = $this->input->post('username');
+    $password = $this->input->post('password');
+
+
+    $newUser = array(
+        'username' => $username,
+        'password' => $password
+    );
+
+    $this->Usuarios_model->crearUsuario($newUser);
+
+    $response = array('success' => true);
+    echo json_encode($response);
+}
+
+
+	
     public function logout()
     {
-        $this->session->unset_userdata('nombre_usuario'); // Eliminar el nombre de usuario de la sesión
+        $this->session->unset_userdata('nombre_usuario');
         $this->session->sess_destroy();
         redirect('login');
     }
 }
-

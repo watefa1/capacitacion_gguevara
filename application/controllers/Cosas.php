@@ -5,7 +5,7 @@ class Cosas extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("Cosas_model");
-        $this->load->library("session"); // Cargar la biblioteca session
+        $this->load->library("session");
     }
 
     public function index()
@@ -28,7 +28,7 @@ class Cosas extends CI_Controller {
             $data = $this->Cosas_model->buscar_cosas($termino_busqueda);
         }
 
-        $nombreUsuario = $this->session->userdata('nombre_usuario'); // Obtener el nombre de usuario de la sesión
+        $nombreUsuario = $this->session->userdata('nombre_usuario');
 
         $this->load->view('cosas', array("data" => $data, "nombreUsuario" => $nombreUsuario));
     }

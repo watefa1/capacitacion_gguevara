@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php if (isset($_GET['alert']) && $_GET['alert'] == 1): ?>
+    <script>
+        alert("Debes iniciar sesión para acceder a las demás páginas.");
+    </script>
+<?php endif; ?><!DOCTYPE html>
 <html lang="es">
 <head>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>

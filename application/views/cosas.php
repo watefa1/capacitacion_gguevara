@@ -18,6 +18,35 @@ if ($hora >= 6 && $hora < 12) {
     <link href="application/css/Style.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <title>Cosas</title>
+	<script>
+$(document).ready(function() {
+	$(".delete-link").click(function(e) {
+    e.preventDefault();
+
+    var deleteUrl = $(this).attr("href");
+    var row = $(this).closest("tr");
+
+    $.ajax({
+        url: deleteUrl,
+        type: "POST",
+        success: function(response) {
+            var data = JSON.parse(response);
+
+            if (data.success) {
+                row.fadeOut(500, function() {
+                    $(this).remove();
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log(error);
+        }
+    });
+});
+
+});
+</script>
+
 </head>
     <div class="cuadro">
 	<h4 class="usuariopalabra"> <?php echo $saludo; ?>, <?php echo $nombreUsuario; ?></h4>
@@ -67,7 +96,7 @@ if ($hora >= 6 && $hora < 12) {
                         </td>
                         <td>
                             <a href="<?php echo base_url(); ?>cosasEdit/index/<?php echo $value->id; ?>" class="btn ion-icon-accion"><ion-icon name="create-sharp"></ion-icon></a>
-                            <a href="<?php echo base_url(); ?>/cosas/delete/<?php echo $value->id; ?>" class="btn ion-icon-accion"><ion-icon name="trash-bin-sharp"></ion-icon></a>
+							<a href="<?php echo base_url(); ?>/cosas/delete/<?php echo $value->id; ?>" class="btn ion-icon-accion delete-link"><ion-icon name="trash-bin-sharp"></ion-icon></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

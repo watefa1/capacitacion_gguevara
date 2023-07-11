@@ -2,7 +2,17 @@
     <script>
         alert("Debes iniciar sesión para acceder a las demás páginas.");
     </script>
-<?php endif; ?><!DOCTYPE html>
+<?php endif;
+date_default_timezone_set('America/Argentina/Buenos_Aires'); 
+$hora = date('H'); 
+
+if ($hora >= 6 && $hora < 12) {
+    $saludo = 'Buenos días';
+} elseif ($hora >= 12 && $hora < 18) {
+    $saludo = 'Buenas tardes';
+} else {
+    $saludo = 'Buenas noches';
+} ?><!DOCTYPE html>
 <html lang="es">
 <head>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -12,7 +22,7 @@
 </head>
 <body class="background">
     <center>
-        <h1>¡Bienvenido!</h1>
+        <h1>¡<?php echo $saludo;?>!</h1>
         <form action="login" method="post">
             <label for="username"></label>
             <input type="text" class="campos" placeholder="usuario" id="username" name="username" required>
@@ -22,7 +32,7 @@
             <button type="submit" class="my-button colorpalabrasboton" style="margin-top: 3px;">Iniciar sesión</button>
         </form>
 		<button class="my-button colorpalabrasboton" style="margin-top: 3px;" id="register-btn">Registrarse</button>
-
+        <br><a href='recuperar_contrasena'>Olvide Mi Contraseña</a>
         <?php if (isset($error)): ?>
             <p><?php echo $error; ?></p>
         <?php endif; ?>

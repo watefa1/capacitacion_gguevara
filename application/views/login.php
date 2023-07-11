@@ -55,48 +55,48 @@ if ($hora >= 6 && $hora < 12) {
 
 
 		<script>
-$(document).ready(function() {
-    var registerModal = document.getElementById("register-modal");
-    var registerButton = document.getElementById("register-btn");
-    var closeSpan = document.getElementsByClassName("close")[0];
-
-    registerButton.onclick = function() {
-        registerModal.style.display = "block";
-    };
-
-    closeSpan.onclick = function() {
-        registerModal.style.display = "none";
-    };
-
-    window.onclick = function(event) {
-        if (event.target == registerModal) {
-            registerModal.style.display = "none";
-        }
-    };
-
-    $("#register-modal form").submit(function(e) {
-        e.preventDefault(); 
-
-        $.ajax({
-            url: "<?php echo site_url('login/register'); ?>",
-            type: "POST",
-            data: $(this).serialize(),
-            dataType: "json",
-            success: function(response) {
-                if (response.success) {
-                    alert("¡Registro exitoso!");
-                    registerModal.style.display = "none";
-					window.location.href = "<?php echo site_url('login'); ?>";
-                } else {
-                    alert("Hubo un error en el registro. Inténtalo de nuevo.");
-                }
-            },
-            error: function() {
-                alert("Hubo un error en el registro. Inténtalo de nuevo.");
-            }
-        });
-    });
-});
+	$(document).ready(function() {
+	    var registerModal = document.getElementById("register-modal");
+	    var registerButton = document.getElementById("register-btn");
+	    var closeSpan = document.getElementsByClassName("close")[0];
+	
+	    registerButton.onclick = function() {
+	        registerModal.style.display = "block";
+	    };
+	
+	    closeSpan.onclick = function() {
+	        registerModal.style.display = "none";
+	    };
+	
+	    window.onclick = function(event) {
+	        if (event.target == registerModal) {
+	            registerModal.style.display = "none";
+	        }
+	    };
+	
+	    $("#register-modal form").submit(function(e) {
+	        e.preventDefault(); 
+		
+	        $.ajax({
+	            url: "<?php echo site_url('login/register'); ?>",
+	            type: "POST",
+	            data: $(this).serialize(),
+	            dataType: "json",
+	            success: function(response) {
+	                if (response.success) {
+	                    alert("¡Registro exitoso!");
+	                    registerModal.style.display = "none";
+						window.location.href = "<?php echo site_url('login'); ?>";
+	                } else {
+	                    alert("Hubo un error en el registro. Inténtalo de nuevo.");
+	                }
+	            },
+	            error: function() {
+	                alert("Hubo un error en el registro. Inténtalo de nuevo.");
+	            }
+	        });
+	    });
+	});
 </script>
 
 </body>

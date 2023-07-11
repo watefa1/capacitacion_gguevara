@@ -34,9 +34,9 @@ class Cosas extends CI_Controller {
     }
 
     public function delete($id)
-{
-    $this->Cosas_model->delete($id);
-    $response = array("success" => true);
-    echo json_encode($response);
-}
+	{
+	    $this->Cosas_model->delete($id);
+	    $response = array("success" => true);
+	    echo json_encode($response);
+	}
 }

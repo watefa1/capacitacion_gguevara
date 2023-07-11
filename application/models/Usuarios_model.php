@@ -24,4 +24,22 @@ class Usuarios_model extends CI_Model {
     {
         $this->db->insert('usuarios', $userData);
     }
+
+	public function getUserByUsername($username)
+	{
+	    $this->db->where('username', $username);
+	    $query = $this->db->get('usuarios');
+	
+	    if ($query->num_rows() > 0) {
+	        $row = $query->row();
+	        $user = new stdClass();
+	        $user->id = $row->id;
+	        $user->username = $row->username;
+	        $user->password = $row->password;
+	        return $user;
+	    } else {
+	        return false;
+	    }
+	}
+
 }

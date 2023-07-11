@@ -8,41 +8,43 @@ class Login extends CI_Controller {
     }
 
     public function index()
-    {
-        if ($this->input->server('REQUEST_METHOD') === 'POST') {
-            $username = $this->input->post('username');
-            $password = $this->input->post('password');
-            
-            $user = $this->Usuarios_model->login($username, $password);
+	{
+	    if ($this->input->server('REQUEST_METHOD') === 'POST') {
+	        $username = $this->input->post('username');
+	        $password = $this->input->post('password');
+		
+	        $user = $this->Usuarios_model->getUserByUsername($username);
+		
+	        if ($user && password_verify($password, $user->password)) {
+	            $this->session->set_userdata('nombre_usuario', $user->username);
+	            redirect('cosas');
+	        } else {
+	            $data['error'] = 'Hay errores en el usuario y/o contraseña. Inténtalo de nuevo.';
+	            $this->load->view('login', $data);
+	        }
+	    } else {
+	        $this->load->view('login');
+	    }
+	}
 
-            if ($user) {
-                $this->session->set_userdata('nombre_usuario', $user->username);
-                redirect('cosas');
-            } else {
-                $data['error'] = 'Hay errores en el usuario y/o contraseña. Inténtalo de nuevo.';
-                $this->load->view('login', $data);
-            }
-        } else {
-            $this->load->view('login');
-        }
-    }
 
 	public function register()
-{
-    $username = $this->input->post('username');
-    $password = $this->input->post('password');
+    {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
 
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $newUser = array(
-        'username' => $username,
-        'password' => $password
-    );
+        $newUser = array(
+            'username' => $username,
+            'password' => $hashedPassword
+        );
 
-    $this->Usuarios_model->crearUsuario($newUser);
+        $this->Usuarios_model->crearUsuario($newUser);
 
-    $response = array('success' => true);
-    echo json_encode($response);
-}
+        $response = array('success' => true);
+        echo json_encode($response);
+    }
 
 
 	

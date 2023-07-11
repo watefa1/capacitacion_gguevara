@@ -19,32 +19,32 @@ if ($hora >= 6 && $hora < 12) {
     <meta charset="utf-8">
     <title>Cosas</title>
 	<script>
-$(document).ready(function() {
-	$(".delete-link").click(function(e) {
-    e.preventDefault();
-
-    var deleteUrl = $(this).attr("href");
-    var row = $(this).closest("tr");
-
-    $.ajax({
-        url: deleteUrl,
-        type: "POST",
-        success: function(response) {
-            var data = JSON.parse(response);
-
-            if (data.success) {
-                row.fadeOut(500, function() {
-                    $(this).remove();
-                });
-            }
-        },
-        error: function(xhr, status, error) {
-            console.log(error);
-        }
-    });
-});
-
-});
+	$(document).ready(function() {
+		$(".delete-link").click(function(e) {
+	    e.preventDefault();
+		
+	    var deleteUrl = $(this).attr("href");
+	    var row = $(this).closest("tr");
+		
+	    $.ajax({
+	        url: deleteUrl,
+	        type: "POST",
+	        success: function(response) {
+	            var data = JSON.parse(response);
+			
+	            if (data.success) {
+	                row.fadeOut(500, function() {
+	                    $(this).remove();
+	                });
+	            }
+	        },
+	        error: function(xhr, status, error) {
+	            console.log(error);
+	        }
+	    });
+	});
+	
+	});
 </script>
 
 </head>

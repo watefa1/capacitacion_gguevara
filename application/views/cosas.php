@@ -11,69 +11,72 @@ if ($hora >= 6 && $hora < 12) {
 } ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>	
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="application/css/Style.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <title>Cosas</title>
-	<script>
-	$(document).ready(function() {
-		$(".delete-link").click(function(e) {
-	    e.preventDefault();
-		
-	    var deleteUrl = $(this).attr("href");
-	    var row = $(this).closest("tr");
-		
-	    $.ajax({
-	        url: deleteUrl,
-	        type: "POST",
-	        success: function(response) {
-	            var data = JSON.parse(response);
-			
-	            if (data.success) {
-	                row.fadeOut(500, function() {
-	                    $(this).remove();
-	                });
-	            }
-	        },
-	        error: function(xhr, status, error) {
-	            console.log(error);
-	        }
-	    });
-	});
-	
-	});
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const deleteLinks = document.querySelectorAll(".delete-link");
 
+            deleteLinks.forEach((link) => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    const deleteUrl = this.getAttribute("href");
+                    const row = this.closest("tr");
+
+                    fetch(deleteUrl, {
+                        method: "POST"
+                    })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.success) {
+                                row.style.opacity = 0;
+                                setTimeout(() => row.remove(), 500);
+                            }
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                });
+            });
+        });
+    </script>
 </head>
+
+<body>
     <div class="cuadro">
-	<h4 class="usuariopalabra"> <?php echo $saludo; ?>, <?php echo $nombreUsuario; ?></h4>
+        <h4 class="usuariopalabra"> <?php echo $saludo; ?>, <?php echo $nombreUsuario; ?></h4>
         <p class="usuariopalabra"> ROL: *no disponible*</p>
     </div>
-	<h1 data-title="Lista de Cosas" style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);">Lista de Cosas</h1>
+    <h1 data-title="Lista de Cosas" style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);">Lista de Cosas</h1>
     <button class="my-button">
         <a href="/RegistroDeCosas" class="colorpalabrasboton">Registrar nueva cosa <ion-icon name="planet-sharp"></ion-icon></a>
     </button>
     <button class="my-button">
         <a href="/RegistroDeTags" class="colorpalabrasboton">ABM TAGS <ion-icon name="pricetags-sharp"></ion-icon></a>
-    </button> <style>
-			    .logout-button {
-			        float: right;
-			        margin-top: 1px;
-			    }
-			</style>
-	<button class="my-button logout-button">
-    <a href="<?php echo base_url('Login/logout'); ?>" class="colorpalabrasboton">Cerrar sesión <ion-icon name="rocket-sharp"></ion-icon></a>
-	</button>
+    </button>
+    <style>
+        .logout-button {
+            float: right;
+            margin-top: 1px;
+        }
+    </style>
+    <button class="my-button logout-button">
+        <a href="<?php echo base_url('Login/logout'); ?>" class="colorpalabrasboton">Cerrar sesión <ion-icon name="rocket-sharp"></ion-icon></a>
+    </button>
     <center>
-		<div class="result-container">
-			<form id="search-form" method="get">
-				<input type="search" name="search" class="campos" placeholder="Buscar cosa..." value="<?php echo $this->input->get('search')?>" autofocus>
-				<button class="my-button1" type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>
-				<button class="my-button1"><a href="Cosas"><ion-icon name="refresh-sharp"></ion-icon></a></button>
-			</form>
+        <div class="result-container">
+            <form id="search-form" method="get">
+                <input type="search" name="search" class="campos" placeholder="Buscar cosa..."
+                    value="<?php echo $this->input->get('search')?>" autofocus>
+                <button class="my-button1" type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>
+                <button class="my-button1"><a href="Cosas"><ion-icon name="refresh-sharp"></ion-icon></a></button>
+            </form>
             <table class="tabla" border="1">
                 <tr>
                     <th>ID</th>
@@ -83,22 +86,24 @@ if ($hora >= 6 && $hora < 12) {
                     <th class="moving-border" data-title="Acción"></th>
                 </tr>
                 <?php foreach($data as $key => $value): ?>
-                    <tr>
-                        <th scope="row"><?php echo $key; ?></th>
-                        <td><?php echo $value->cosa; ?></td>
-                        <td><?php echo $value->cant; ?></td>
-                        <td>
-                            <?php if (property_exists($value, 'tags') && is_array($value->tags)): ?>
-                                <?php foreach ($value->tags as $tag): ?>
-                                    <?php echo $tag->tag . ', '; ?>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </td>
-                        <td>
-                            <a href="<?php echo base_url(); ?>cosasEdit/index/<?php echo $value->id; ?>" class="btn ion-icon-accion"><ion-icon name="create-sharp"></ion-icon></a>
-							<a href="<?php echo base_url(); ?>/cosas/delete/<?php echo $value->id; ?>" class="btn ion-icon-accion delete-link"><ion-icon name="trash-bin-sharp"></ion-icon></a>
-                        </td>
-                    </tr>
+                <tr>
+                    <th scope="row"><?php echo $key; ?></th>
+                    <td><?php echo $value->cosa; ?></td>
+                    <td><?php echo $value->cant; ?></td>
+                    <td>
+                        <?php if (property_exists($value, 'tags') && is_array($value->tags)): ?>
+                        <?php foreach ($value->tags as $tag): ?>
+                        <?php echo $tag->tag . ', '; ?>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <a href="<?php echo base_url(); ?>cosasEdit/index/<?php echo $value->id; ?>"
+                            class="btn ion-icon-accion"><ion-icon name="create-sharp"></ion-icon></a>
+                        <a href="<?php echo base_url(); ?>/cosas/delete/<?php echo $value->id; ?>"
+                            class="btn ion-icon-accion delete-link"><ion-icon name="trash-bin-sharp"></ion-icon></a>
+                    </td>
+                </tr>
                 <?php endforeach; ?>
             </table>
         </div>

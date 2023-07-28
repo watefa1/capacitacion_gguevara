@@ -33,9 +33,18 @@ class Cosas extends CI_Controller {
         $this->load->view('cosas', array("data" => $data, "nombreUsuario" => $nombreUsuario));
     }
 
-    public function delete($id)
+	public function delete($id)
 	{
-	    $this->Cosas_model->delete($id);
+	    if (!$this->session->userdata('nombre_usuario')) {
+			redirect('login?alert=1');
+		}
+	    
+	    $nombreUsuario = $this->session->userdata('nombre_usuario');
+	    $this->load->model("Cosas_model");
+	    $usuario = $this->Cosas_model->obtenerIdPorNombreUsuario($nombreUsuario);
+
+	    $this->Cosas_model->delete($id, $usuario);
+
 	    $response = array("success" => true);
 	    echo json_encode($response);
 	}

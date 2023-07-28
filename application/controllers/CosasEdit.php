@@ -44,19 +44,22 @@ public function update($id)
     $cantidad = $this->input->post('cant');
     $etiquetas = $this->input->post('etiquetas');
 
+    $this->load->model("Usuarios_model");
+    $usuario = $this->Usuarios_model->getUserByUsername($this->session->userdata('nombre_usuario'));
+
     $data = array(
         'cosa' => $nombre,
-        'cant' => $cantidad
+        'cant' => $cantidad,
+        'modificado_en' => date('Y-m-d H:i:s'),
+        'modificado_por' => $usuario->id
     );
 
     $this->Cosas_model->update($data, $id);
-
-    // Actualizar etiquetas
-    $this->Cosas_model->clearTags($id); // Limpiar todas las etiquetas existentes
+    $this->Cosas_model->clearTags($id);
 
     if (!empty($etiquetas)) {
         foreach ($etiquetas as $tagId) {
-            $this->Cosas_model->addTag($id, $tagId); // Agregar las nuevas etiquetas
+            $this->Cosas_model->addTag($id, $tagId);
         }
     }
 

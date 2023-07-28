@@ -64,18 +64,19 @@ public function getTag($id){
 	return $results->row();
 }
 
-public function delete($id){
-	$this->db->where('cosas_id', $id);
-    $this->db->delete('Cosas_tags');
-
-	$this->db->where("id",$id);
-	$this->db->delete("cosas");
-
+public function delete($id, $usuario)
+{
+	$this->db->where('id', $id);
+	$this->db->update('cosas', array(
+		'eliminado_por' => $usuario,
+		'eliminado_en' => date('Y-m-d H:i:s')
+	));
 }
 
-public function update($data, $id){
-	$this->db->where("id",$id);
-	$this->db->update("cosas",$data);
+public function update($data, $id)
+{
+	$this->db->where("id", $id);
+	$this->db->update("cosas", $data);
 }
 
 public function buscar_cosas($termino_busqueda)
@@ -135,6 +136,25 @@ public function addTag($cosaId, $tagId)
     );
     $this->db->insert('Cosas_tags', $data);
 }
+
+public function guardarCosa($data)
+    {
+        $this->db->insert('cosas', $data);
+    }
+
+	public function obtenerIdPorNombreUsuario($nombreUsuario)
+    {
+        $this->db->select('id');
+        $this->db->where('username', $nombreUsuario);
+        $query = $this->db->get('usuarios');
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->id;
+        } else {
+            return null;
+        }
+    }
 
 
 }

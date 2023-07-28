@@ -49,26 +49,26 @@ if ($hora >= 6 && $hora < 12) {
 </head>
 
 <body>
-    <div class="cuadro">
-        <h4 class="usuariopalabra"> <?php echo $saludo; ?>, <?php echo $nombreUsuario; ?></h4>
-        <p class="usuariopalabra"> ROL: *no disponible*</p>
-    </div>
-    <h1 data-title="Lista de Cosas" style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);">Lista de Cosas</h1>
+	<h1 data-title="Lista de Cosas" style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);">Lista de Cosas</h1>
     <button class="my-button">
-        <a href="/RegistroDeCosas" class="colorpalabrasboton">Registrar nueva cosa <ion-icon name="planet-sharp"></ion-icon></a>
+		<a href="/RegistroDeCosas" class="colorpalabrasboton">Registrar nueva cosa <ion-icon name="planet-sharp"></ion-icon></a>
     </button>
     <button class="my-button">
-        <a href="/RegistroDeTags" class="colorpalabrasboton">ABM TAGS <ion-icon name="pricetags-sharp"></ion-icon></a>
+		<a href="/RegistroDeTags" class="colorpalabrasboton">ABM TAGS <ion-icon name="pricetags-sharp"></ion-icon></a>
     </button>
     <style>
-        .logout-button {
-            float: right;
+		.logout-button {
+			float: right;
             margin-top: 1px;
         }
-    </style>
+		</style>
     <button class="my-button logout-button">
-        <a href="<?php echo base_url('Login/logout'); ?>" class="colorpalabrasboton">Cerrar sesión <ion-icon name="rocket-sharp"></ion-icon></a>
+		<a href="<?php echo base_url('Login/logout'); ?>" class="colorpalabrasboton">Cerrar sesión <ion-icon name="rocket-sharp"></ion-icon></a>
     </button>
+	<div class="cuadro">
+		<h4 class="usuariopalabraa"> <?php echo $saludo; ?>, <?php echo $nombreUsuario; ?></h4>
+		<p class="usuariopalabrab"> ROL: *no disponible*</p>
+	</div>
     <center>
         <div class="result-container">
             <form id="search-form" method="get">
@@ -77,35 +77,53 @@ if ($hora >= 6 && $hora < 12) {
                 <button class="my-button1" type="submit"><ion-icon name="telescope-sharp"></ion-icon></button>
                 <button class="my-button1"><a href="Cosas"><ion-icon name="refresh-sharp"></ion-icon></a></button>
             </form>
-            <table class="tabla" border="1">
-                <tr>
-                    <th>ID</th>
-                    <th class="moving-border" data-title="Nombre cosa"></th>
-                    <th class="moving-border" data-title="Cantidad"></th>
-                    <th class="moving-border" data-title="Tag"></th>
-                    <th class="moving-border" data-title="Acción"></th>
-                </tr>
-                <?php foreach($data as $key => $value): ?>
-                <tr>
-                    <th scope="row"><?php echo $key; ?></th>
-                    <td><?php echo $value->cosa; ?></td>
-                    <td><?php echo $value->cant; ?></td>
-                    <td>
-                        <?php if (property_exists($value, 'tags') && is_array($value->tags)): ?>
-                        <?php foreach ($value->tags as $tag): ?>
-                        <?php echo $tag->tag . ', '; ?>
-                        <?php endforeach; ?>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <a href="<?php echo base_url(); ?>cosasEdit/index/<?php echo $value->id; ?>"
-                            class="btn ion-icon-accion"><ion-icon name="create-sharp"></ion-icon></a>
-                        <a href="<?php echo base_url(); ?>/cosas/delete/<?php echo $value->id; ?>"
-                            class="btn ion-icon-accion delete-link"><ion-icon name="trash-bin-sharp"></ion-icon></a>
-                    </td>
-                </tr>
+			<?php
+				$tagColors = array(
+				    1 => array('background' => '#96F4FF', 'border' => 'blue'),
+				    2 => array('background' => '#FEC1B5', 'border' => 'red'),
+					3 => array('background' => '#FF96F9', 'border' => 'cyan'),
+				);
+				?>
+			<table class="tabla" border="1">
+   				 <tr>
+   				     <th>ID</th>
+   				     <th>Nombre cosa</th>
+   				     <th>Cantidad</th>
+   				     <th>Tag</th>
+   				     <th>Acción</th>
+   				 </tr>
+   				 <?php foreach($data as $key => $value): ?>
+   				 <tr>
+   				     <th scope="row"><?php echo $key; ?></th>
+   				     <td><?php echo $value->cosa; ?></td>
+   				     <td><?php echo $value->cant; ?></td>
+   				     <td>
+            <?php if (property_exists($value, 'tags') && is_array($value->tags)): ?>
+                <?php foreach ($value->tags as $tag): ?>
+                    <?php
+                        $tagId = $tag->id;
+                        
+                        if (array_key_exists($tagId, $tagColors)) {
+                            $background = $tagColors[$tagId]['background'];
+                            $border = $tagColors[$tagId]['border'];
+                        } else {
+                            $background = '#ECECEC';
+                            $border = '#333';
+                        }
+                    ?>
+                    <span style="display: inline-block; padding: 4px; border: 1px solid <?php echo $border; ?>; background-color: <?php echo $background; ?>; margin-right: 4px;"><?php echo $tag->tag; ?></span>
                 <?php endforeach; ?>
-            </table>
+            <?php endif; ?>
+        </td>
+   				     <td>
+   				         <a href="<?php echo base_url(); ?>cosasEdit/index/<?php echo $value->id; ?>"
+   				             class="btn ion-icon-accion"><ion-icon name="create-sharp"></ion-icon></a>
+   				         <a href="<?php echo base_url(); ?>/cosas/delete/<?php echo $value->id; ?>"
+   				             class="btn ion-icon-accion delete-link"><ion-icon name="trash-bin-sharp"></ion-icon></a>
+   				     </td>
+   				 </tr>
+   				 <?php endforeach; ?>
+			</table>
         </div>
     </center>
 </body>

@@ -33,12 +33,22 @@ class RegistroDeCosas extends CI_Controller {
 				$etiquetas = $this->Cosas_model->getEtiquetas();
 				$datos['tags'] = $etiquetas;
 				$this->load->view('registrodecosas', $datos);
-			}else{
+			} else {
+				$nombre = $this->input->post("cosa", true);
+				$cantidad = $this->input->post("cant");
+		
+				$usuarioActual = $this->session->userdata('nombre_usuario');
+				$idUsuario = $this->Cosas_model->obtenerIdPorNombreUsuario($usuarioActual);
+				$fechaActual = date('Y-m-d H:i:s');
+		
 				$data = array(
 					"cosa" => $nombre,
-					"cant" => $cantidad
+					"cant" => $cantidad,
+					"creado_por" => $idUsuario,
+					"creado_en" => $fechaActual
 				);
-				$this->Cosas_model->save($data);
+		
+				$this->Cosas_model->guardarCosa($data);
 				$id_cosa = $this->db->insert_id();
 				$id_tags = $this->input->post("etiquetas");
 				$this->Cosas_model->saveCosasTags($id_cosa, $id_tags);

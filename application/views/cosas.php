@@ -49,6 +49,7 @@ if ($hora >= 6 && $hora < 12) {
 </head>
 
 <body>
+<?php $this->load->view('head'); ?>
 	<h1 data-title="Lista de Cosas" style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);">Lista de Cosas</h1>
     <button class="my-button">
 		<a href="/RegistroDeCosas" class="colorpalabrasboton">Registrar nueva cosa <ion-icon name="planet-sharp"></ion-icon></a>
@@ -62,9 +63,6 @@ if ($hora >= 6 && $hora < 12) {
             margin-top: 1px;
         }
 		</style>
-    <button class="my-button logout-button">
-		<a href="<?php echo base_url('Login/logout'); ?>" class="colorpalabrasboton">Cerrar sesión <ion-icon name="rocket-sharp"></ion-icon></a>
-    </button>
 	<div class="cuadro">
 		<h4 class="usuariopalabraa"> <?php echo $saludo; ?>, <?php echo $nombreUsuario; ?></h4>
 		<p class="usuariopalabrab"> ROL: *no disponible*</p>
@@ -86,7 +84,6 @@ if ($hora >= 6 && $hora < 12) {
 				?>
 			<table class="tabla" border="1">
    				 <tr>
-   				     <th>ID</th>
    				     <th>Nombre cosa</th>
    				     <th>Cantidad</th>
    				     <th>Tag</th>
@@ -94,7 +91,6 @@ if ($hora >= 6 && $hora < 12) {
    				 </tr>
    				 <?php foreach($data as $key => $value): ?>
    				 <tr>
-   				     <th scope="row"><?php echo $key; ?></th>
    				     <td><?php echo $value->cosa; ?></td>
    				     <td><?php echo $value->cant; ?></td>
    				     <td>

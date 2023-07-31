@@ -6,6 +6,11 @@
 	<meta charset="utf-8">
 	<title>Modificación de cosas</title>
 </head>
+<?php $this->load->view('head'); ?>
+
+<button class="my-button">
+  		<a href="/cosas">Volver</a>
+	</button>
 <body class="background"> <center>
 	<div>
 	<h1>Modificación de cosas</h1>
@@ -22,9 +27,6 @@
 		</div>
 		<input type="submit" value="Guardar" class="my-button">
 	</form>
-	<button class="my-button">
-  		<a href="/cosas">Volver</a>
-	</button>
 	</center>
 </body>
 </html>

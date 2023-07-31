@@ -7,6 +7,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Registro de cosas</title>
 </head>
+<?php $this->load->view('head'); ?>
+
+<button">
+  		<a href="/cosas" class='my-button'>Inicio</a>
+	</button>
 <body class="background"> <center>
 <div>
 	<h1>Registro de Cosas</h1>
@@ -27,9 +32,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <?php } ?>
 </div>
 <input type="submit" value="Guardar" class="my-button">
-	</form>
-	<button">
-  		<a href="/cosas" class='my-button'>Volver</a>
-	</button> </center>
+	</form> </center>
 </body>
 </html>

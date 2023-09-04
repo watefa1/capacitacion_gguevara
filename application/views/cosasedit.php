@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<link rel="icon" href="<?php echo base_url('application/image/logo.png'); ?>" type="image/x-icon">
 <link href="/application/css/Style.css" rel="stylesheet" type="text/css">
 	<meta charset="utf-8">
 	<title>Modificación de cosas</title>

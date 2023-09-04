@@ -31,6 +31,12 @@
 		font-weight: bold;
 		text-decoration: none;
 	}
+
+	.invalid-text {
+		color: #736868;
+		font-weight: bold;
+		text-decoration: none;
+	}
 	
 	.colorpalabrasboton:hover {
 		color: #ffffff; /* Cambia el color del texto a blanco cuando se pasa el mouse por encima */

@@ -4,7 +4,7 @@
 <div id="confirmModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Vas a cerrar la sesión, ¿Estás seguro?</p>
+    <p>Vas a cerrar la sesión, <b>¿Estás seguro?</b></p>
     <button id="confirmLogout" class="my-button">Confirmar</button>
     <button id="cancelLogout" class="my-button">Cancelar</button>
   </div>
@@ -26,12 +26,12 @@
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #4ac4a9;
+  border: 2px solid #4ac4a9;
   width: 300px;
 }
 
 .close {
-  color: #aaa;
+  color: black;
   float: right;
   font-size: 28px;
   font-weight: bold;

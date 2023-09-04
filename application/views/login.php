@@ -15,6 +15,7 @@ if ($hora >= 6 && $hora < 12) {
 } ?><!DOCTYPE html>
 <html lang="es">
 <head>
+<link rel="icon" href="<?php echo base_url('application/image/logo.png'); ?>" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <link href="application/css/Style.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">

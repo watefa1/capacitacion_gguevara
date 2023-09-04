@@ -13,6 +13,7 @@ if ($hora >= 6 && $hora < 12) {
 <html lang="es">
 
 <head>
+<link rel="icon" href="<?php echo base_url('application/image/logo.png'); ?>" type="image/x-icon">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="application/css/Style.css" rel="stylesheet" type="text/css">

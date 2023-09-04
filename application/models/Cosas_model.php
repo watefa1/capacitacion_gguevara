@@ -23,8 +23,22 @@ public function saveEtiquetasDB($tag)
 
 public function getEtiquetasBD()
 {
-	$query = $this->db->get("tags");
-	return $query->result();
+    $query = $this->db->get("tags");
+    $tags = $query->result();
+
+    foreach ($tags as $tag) {
+        $tag->associated = $this->isTagAssociated($tag->id);
+    }
+
+    return $tags;
+}
+
+private function isTagAssociated($tagId)
+{
+    $this->db->where('tags_id', $tagId);
+    $query = $this->db->get('Cosas_tags');
+
+    return $query->num_rows() > 0;
 }
 
 public function deleteEtiquetasBD($id)

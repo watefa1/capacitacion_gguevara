@@ -142,6 +142,13 @@ public function clearTags($cosaId)
     $this->db->delete('Cosas_tags');
 }
 
+public function deleteTag($tagId)
+{
+    $this->db->where('tags_id', $tagId);
+    $this->db->delete('Cosas_tags');
+}
+
+
 public function addTag($cosaId, $tagId)
 {
     $data = array(

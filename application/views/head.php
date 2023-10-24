@@ -4,7 +4,7 @@
 <div id="confirmModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Vas a cerrar la sesión, <b>¿Estás seguro?</b></p>
+    <p><b>Vas a cerrar la sesión,</b> <span class="letra"> <b>¿Estás seguro?</b></p> </span>
     <button id="confirmLogout" class="my-button">Confirmar</button>
     <button id="cancelLogout" class="my-button">Cancelar</button>
   </div>
@@ -37,6 +37,12 @@
   font-weight: bold;
 }
 
+.letra {
+  color: #5c5c5c;
+  float: right;
+  font-size: 18px;
+  font-weight: bold;
+}
 .close:hover,
 .close:focus {
   color: black;

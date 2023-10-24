@@ -90,7 +90,8 @@ if ($hora >= 6 && $hora < 12) {
    				     <th>Tag</th>
    				     <th>Acción</th>
    				 </tr>
-   				 <?php foreach($data as $key => $value): ?>
+					<?php foreach($data as $key => $value): ?>
+    				<?php if (empty($value->eliminado_en)): ?>
    				 <tr>
    				     <td><?php echo $value->cosa; ?></td>
    				     <td><?php echo $value->cant; ?></td>
@@ -115,11 +116,12 @@ if ($hora >= 6 && $hora < 12) {
    				     <td>
    				         <a href="<?php echo base_url(); ?>cosasEdit/index/<?php echo $value->id; ?>"
    				             class="btn ion-icon-accion"><ion-icon name="create-sharp"></ion-icon></a>
-   				         <a href="<?php echo base_url(); ?>/cosas/delete/<?php echo $value->id; ?>"
+   				         <a href="<?php echo base_url(); ?>cosas/delete/<?php echo $value->id; ?>"
    				             class="btn ion-icon-accion delete-link"><ion-icon name="trash-bin-sharp"></ion-icon></a>
    				     </td>
    				 </tr>
-   				 <?php endforeach; ?>
+					<?php endif; ?>
+<?php endforeach; ?>
 			</table>
         </div>
     </center>

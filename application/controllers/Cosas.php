@@ -34,18 +34,27 @@ class Cosas extends CI_Controller {
     }
 
 	public function delete($id)
-	{
-	    if (!$this->session->userdata('nombre_usuario')) {
-			redirect('login?alert=1');
-		}
-	    
-	    $nombreUsuario = $this->session->userdata('nombre_usuario');
-	    $this->load->model("Cosas_model");
-	    $usuario = $this->Cosas_model->obtenerIdPorNombreUsuario($nombreUsuario);
+{
+    if (!$this->session->userdata('nombre_usuario')) {
+        redirect('login?alert=1');
+    }
 
-	    $this->Cosas_model->delete($id, $usuario);
+    $nombreUsuario = $this->session->userdata('nombre_usuario');
+    $this->load->model("Cosas_model");
+    $usuario = $this->Cosas_model->obtenerIdPorNombreUsuario($nombreUsuario);
 
-	    $response = array("success" => true);
-	    echo json_encode($response);
-	}
+    // Obtén la lista de tags asociados a la cosa que se va a eliminar
+    $tagsAsociados = $this->Cosas_model->getTagsByCosaId($id);
+
+    // Ahora puedes eliminar la cosa y sus etiquetas asociadas
+    $this->Cosas_model->delete($id, $usuario);
+
+    // Elimina los tags asociados a la cosa de la base de datos
+    foreach ($tagsAsociados as $tag) {
+        $this->Cosas_model->deleteTag($tag->id);
+    }
+
+    $response = array("success" => true);
+    echo json_encode($response);
+}
 }

@@ -1,4 +1,6 @@
 <?php
+use Entities\Cosa;
+
 class Cosas extends CI_Controller {
 
     public function __construct()

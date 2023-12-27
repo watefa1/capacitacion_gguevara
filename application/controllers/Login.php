@@ -1,11 +1,18 @@
 <?php
 class Login extends CI_Controller {
     
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('Usuarios_model');
-    }
+	public function __construct()
+{
+    parent::__construct();
+
+    // Cargar la base de datos
+    $this->load->database();
+
+    // Cargar el modelo
+    $this->load->model('Usuarios_model');
+
+    // No es necesario cargar Doctrine aquí
+}
 
     public function index()
 	{

@@ -1,4 +1,2 @@
-name: capacitaciongguevara
-migrations_namespace: MyProject\Migrations
 table_name: migrations
-migrations_directory: ./migrations
+migrations_directory: ./application/migrations

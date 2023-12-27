@@ -1,22 +1,27 @@
 <?php
-use Doctrine\ORM\Tools\Setup;
+// bootstrap.php
+require_once "vendor/autoload.php";
+
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Setup as ORMSetup; // Corrected namespace alias
 
-require_once 'vendor/autoload.php';
+// Include the CodeIgniter database configuration
+include 'application/config/database.php';
 
-// Ruta a tus entidades (modelos)
-$entitiesPath = [__DIR__ . '/src/Entity'];
+$paths = ['application/entities'];
+$isDevMode = false;
 
-// Configuración de la conexión a la base de datos (puedes cambiar los valores según tu configuración)
-$dbParams = [
-    'driver' => 'mysqli',
-    'host' => 'db-development.cbq3cbjddsma.us-east-1.rds.amazonaws.com',
-    'user' => 'db_user',
-    'password' => 'ERFJF7p7My5xXjSKRv5Njf69ea2BStS2XJRzSW9Vs',
-    'dbname' => 'gguevarapractica',
+// Use the CodeIgniter database configuration for Doctrine connection
+$conn = [
+    'driver' => 'pdo_mysql',
+    'user' => $db['default']['username'],
+    'password' => $db['default']['password'],
+    'host' => $db['default']['hostname'],
+    'dbname' => $db['default']['database'],
+    'charset' => $db['default']['char_set'],
 ];
 
-$config = Setup::createAnnotationMetadataConfiguration($entitiesPath, true);
-$entityManager = EntityManager::create($dbParams, $config);
-
-return $entityManager;
+$config = ORMSetup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+$connection = DriverManager::getConnection($conn, $config);
+$entityManager = new EntityManager($connection, $config);

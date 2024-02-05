@@ -1,9 +1,10 @@
 <?php
 require_once 'vendor/autoload.php';
+
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP
+ * An open source application development framework for hPHP
  *
  * This content is released under the MIT License (MIT)
  *
@@ -313,6 +314,5 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
-require_once FCPATH . 'vendor/autoload.php';
 
 require_once BASEPATH.'core/CodeIgniter.php';
